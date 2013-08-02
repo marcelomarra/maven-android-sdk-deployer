@@ -14,7 +14,7 @@ Contributors:
 - Lorenzo Villani - initial 4.0 support
 - Paul Merlin http://eskatos.github.com - Google Analytics extra
 - Matteo Panella <morpheus@level28.org> - Google AdMobs extra, support for 4.1
-- Benoit Billington https://github.com/Shusshu Google Cloud Messaging Client and Server, annotations.jar, 4.2, APK Expansion, Licensing
+- Benoit Billington https://github.com/Shusshu Google Cloud Messaging Client and Server, annotations.jar, 4.2, 4.3, APK Expansion, Licensing
 - Michael Lake https://github.com/mlake support for Javadoc attachment for platforms
 - Nic Strong http://www.codepoets.co.nz Google Play Services (gms)
 - Matias Dumrauf http://github.com/mdumrauf - Compatibility v7 library support, Google Analytics support for V1 and V2
@@ -24,6 +24,12 @@ Contributors:
 - Jenny Loomis Williamson https://github.com/jloomis fix for deployment
 - James Wald https://github.com/jameswald configured groupId and artifactId for support libraries
 - Thomas Prochazka https://github.com/tprochazka javadoc attachment
+- Shairon Toledo http://www.hashcode.eti.br doc update
+- Kohsuke Kawaguchi http://kohsuke.org/ webdav support for deployment
+- Lars Hoss http://cv.woeye.net/ v7 appcompat library support
+- Nemanja Nedic https://github.com/nemanjanedic appcompat javadoc fix
+- Yuvi Panda https://github.com/yuvipanda appcompat fix
+- Sebastian Roth https://github.com/ened added missing google-apis-18 add-on
 
 The Maven Android SDK Deployer is a helper maven project that can be
 used to install the libraries necessary to build Android applications
@@ -92,6 +98,7 @@ To install only a certain sdk level use
     mvn install -P 4.0.3
     mvn install -P 4.1
     mvn install -P 4.2
+    mvn install -P 4.3
 
 As a result you should find the android.jar and maps.jar and a number of other
 libraries in your users local repository (~/.m2/repository/) and you can therefore
@@ -183,6 +190,13 @@ For the core platforms
   <version>4.2.2_r2</version>
   <scope>provided</scope>
 </dependency>
+
+<dependency>
+  <groupId>android</groupId>
+  <artifactId>android</artifactId>
+  <version>4.3_r1</version>
+  <scope>provided</scope>
+</dependency>
 ```
 
 For the maps add ons
@@ -271,6 +285,13 @@ For the maps add ons
   <version>17_r3</version>
   <scope>provided</scope>
 </dependency>
+
+<dependency>
+  <groupId>com.google.android.maps</groupId>
+  <artifactId>maps</artifactId>
+  <version>18_r1</version>
+  <scope>provided</scope>
+</dependency>
 ```
 
 For the usb add on
@@ -324,6 +345,13 @@ For the usb add on
   <version>17_r3</version>
   <scope>provided</scope>
 </dependency>
+
+<dependency>
+  <groupId>com.android.future</groupId>
+  <artifactId>usb</artifactId>
+  <version>18_r1</version>
+  <scope>provided</scope>
+</dependency>
 ```
 
 For the compatibility extra (ATTENTION! Do NOT use provided scope!!)
@@ -332,13 +360,13 @@ For the compatibility extra (ATTENTION! Do NOT use provided scope!!)
 <dependency>
   <groupId>android.support</groupId>
   <artifactId>compatibility-v4</artifactId>
-  <version>13</version>
+  <version>18</version>
 </dependency>
 
 <dependency>
   <groupId>android.support</groupId>
   <artifactId>compatibility-v13</artifactId>
-  <version>13</version>
+  <version>18</version>
 </dependency>
 ```
 
@@ -379,14 +407,32 @@ In order to use v7 extra, both dependencies (apklib & jar) are needed
 <dependency>
   <groupId>android.support</groupId>
   <artifactId>compatibility-v7</artifactId>
-  <version>13</version>
+  <version>18</version>
   <type>apklib</type>
 </dependency>
 
 <dependency>
   <groupId>android.support</groupId>
   <artifactId>compatibility-v7</artifactId>
-  <version>13</version>
+  <version>18</version>
+  <type>jar</type>
+</dependency>
+```
+
+For the v7 appcompat library additional dependencies (apklib & jar) are required
+
+```xml
+<dependency>
+  <groupId>android.support</groupId>
+  <artifactId>compatibility-v7-appcompat</artifactId>
+  <version>18</version>
+  <type>apklib</type>
+</dependency>
+
+<dependency>
+  <groupId>android.support</groupId>
+  <artifactId>compatibility-v7-appcompat</artifactId>
+  <version>18</version>
   <type>jar</type>
 </dependency>
 ```
